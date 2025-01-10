@@ -3,16 +3,7 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"time"
 )
-
-type tasks struct {
-	id          string
-	title       string
-	description string
-	dueDate     time.Time
-	Completed   bool
-}
 
 func TasksHandler(w http.ResponseWriter, r *http.Request) {
 

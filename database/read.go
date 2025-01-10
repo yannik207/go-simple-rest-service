@@ -1,12 +1,11 @@
 package database
 
 import (
-	"fmt"
-	"encoding/json"
 	"os"
+	"encoding/json"
 )
 
-func loadTasksFromFile(filename string) ([]Task, error) {
+func LoadTasksFromFile(filename string) ([]Task, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
