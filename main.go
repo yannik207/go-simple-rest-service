@@ -38,7 +38,7 @@ func main() {
 	fmt.Println("Loaded tasks:", loadedTasks)
 
 	// Start HTTP server
-	http.HandleFunc("/hello", server.TasksHandler)
+	http.HandleFunc("/hello", server.WelcomeHandler)
 	http.HandleFunc("/", server.ErrorHandler)
 
 	fmt.Println("Server is running at http://localhost:8080")

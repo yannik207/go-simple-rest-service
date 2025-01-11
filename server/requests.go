@@ -5,7 +5,7 @@ import (
 	"net/http"
 )
 
-func TasksHandler(w http.ResponseWriter, r *http.Request) {
+func WelcomeHandler(w http.ResponseWriter, r *http.Request) {
 
 	fmt.Printf("Type of ResponseWriter: %T\n", w)
 
