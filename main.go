@@ -40,6 +40,7 @@ func main() {
 	// Start HTTP server
 	http.HandleFunc("/hello", server.WelcomeHandler)
 	http.HandleFunc("/", server.ErrorHandler)
+	http.HandleFunc("/tasks", server.TaskHandler)
 
 	fmt.Println("Server is running at http://localhost:8080")
 	http.ListenAndServe(":8080", nil)

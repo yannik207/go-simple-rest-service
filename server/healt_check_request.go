@@ -7,8 +7,6 @@ import (
 
 func WelcomeHandler(w http.ResponseWriter, r *http.Request) {
 
-	fmt.Printf("Type of ResponseWriter: %T\n", w)
-
 	statusCode := http.StatusOK //200
 
 	w.WriteHeader(statusCode)
