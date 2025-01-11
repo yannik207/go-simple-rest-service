@@ -18,6 +18,7 @@ func TaskHandler(w http.ResponseWriter, r *http.Request) {
 	case "DELETE":
 		fmt.Println("DELETE")
 	default:
-		fmt.Println("uuuuu stupid MOOOOAAAAFFUUUUCCCKKKAAAAA")
+		fmt.Println("User X tried to access API via fault method")
+		methods.FaultMethod(w, r)
 	}
 }
