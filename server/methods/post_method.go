@@ -44,9 +44,6 @@ func Post(w http.ResponseWriter, r *http.Request) {
 		return
 	}
 
-	fmt.Println("Description: ", form.Get("Description"))
-	fmt.Printf("Type of values: %T\n", form)
-
 	// Decode the form data into the struct
 	if err := decoder.Decode(&taskStruct, form); err != nil {
 		log.Println("Error decoding form data: ", err)
