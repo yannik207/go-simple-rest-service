@@ -38,7 +38,7 @@ func main() {
 	fmt.Println("Loaded tasks:", loadedTasks)
 
 	// Start HTTP server
-	http.HandleFunc("/hello", server.WelcomeHandler)
+	http.HandleFunc("/health", server.WelcomeHandler)
 	http.HandleFunc("/", server.ErrorHandler)
 	http.HandleFunc("/tasks", server.TaskHandler)
 

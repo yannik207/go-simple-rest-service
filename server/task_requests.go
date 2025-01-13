@@ -12,7 +12,7 @@ func TaskHandler(w http.ResponseWriter, r *http.Request) {
 	case "GET":
 		methods.Get(w, r)
 	case "POST":
-		fmt.Println("POST")
+		methods.Post(w, r)
 	case "PUT":
 		fmt.Println("PUT")
 	case "DELETE":

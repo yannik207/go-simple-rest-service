@@ -19,8 +19,7 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	w.WriteHeader(statusCode)
 
 	// Return a response to the user
-	responseMessage := fmt.Sprintf("Status code: %d", statusCode)
-	w.Write([]byte(responseMessage)) // Send the response message
+	// responseMessage := fmt.Sprintf("Status code: %d", statusCode)
 
 	w.Header().Set("Content-Type", "application/json")
 	err = json.NewEncoder(w).Encode(loadedTasks)
