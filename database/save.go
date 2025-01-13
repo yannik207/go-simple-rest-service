@@ -3,18 +3,17 @@ package database
 import (
 	"encoding/json"
 	"os"
-	"time"
 )
 
-type Task struct {
-	ID          string    `json:"id"`
-	Title       string    `json:"title"`
-	Description string    `json:"description"`
-	DueDate     time.Time `json:"due_date"`
-	Completed   bool      `json:"completed"`
+type TasksStruct struct {
+	ID          string    `schema:"ID"`
+	Title       string    `schema:"Title"`
+	Description string    `schema:"Description"`
+	DueDate     string    `schema:"DueDate"`
+	Completed   string     `schema:"Completed"`
 }
 
-func SaveTasksToFile(tasks []Task, filename string) error {
+func SaveTasksToFile(tasks []TasksStruct, filename string) error {
 	file, err := os.Create(filename)
 	if err != nil {
 		return err

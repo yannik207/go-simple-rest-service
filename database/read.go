@@ -5,13 +5,13 @@ import (
 	"os"
 )
 
-func LoadTasksFromFile(filename string) ([]Task, error) {
+func LoadTasksFromFile(filename string) ([]TasksStruct, error) {
 	file, err := os.Open(filename)
 	if err != nil {
 		return nil, err
 	}
 	defer file.Close()
-	var tasks []Task
+	var tasks []TasksStruct
 	decoder := json.NewDecoder(file)
 	err = decoder.Decode(&tasks)
 	return tasks, err

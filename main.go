@@ -5,18 +5,17 @@ import (
 	"net/http"
 	"task-api/database"
 	"task-api/server"
-	"time"
 )
 
 func main() {
 	// Create a slice of tasks
-	tasks := []database.Task{
+	tasks := []database.TasksStruct{
 		{
 			ID:          "1234",
 			Title:       "clean up",
 			Description: "My girlfriend forces me to clean up my room",
-			DueDate:     time.Now(),
-			Completed:   false,
+			DueDate:     "time.Now()",
+			Completed:   "false",
 		},
 	}
 
