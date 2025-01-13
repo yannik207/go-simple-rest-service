@@ -1,8 +1,8 @@
 package database
 
 import (
-	"os"
 	"encoding/json"
+	"os"
 )
 
 func LoadTasksFromFile(filename string) ([]Task, error) {

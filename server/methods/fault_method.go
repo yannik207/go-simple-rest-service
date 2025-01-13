@@ -5,7 +5,6 @@ import (
 	"net/http"
 )
 
-
 func FaultMethod(w http.ResponseWriter, r *http.Request) {
 	statusCode := http.StatusMethodNotAllowed //405
 

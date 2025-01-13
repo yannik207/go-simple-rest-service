@@ -1,9 +1,9 @@
 package methods
 
 import (
+	"encoding/json"
 	"fmt"
 	"net/http"
-	"encoding/json"
 	"task-api/database"
 )
 
@@ -24,4 +24,3 @@ func Get(w http.ResponseWriter, r *http.Request) {
 	w.Header().Set("Content-Type", "application/json")
 	err = json.NewEncoder(w).Encode(loadedTasks)
 }
-

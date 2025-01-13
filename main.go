@@ -3,9 +3,9 @@ package main
 import (
 	"fmt"
 	"net/http"
-	"time"
 	"task-api/database"
 	"task-api/server"
+	"time"
 )
 
 func main() {
