@@ -6,11 +6,11 @@ import (
 )
 
 type TasksStruct struct {
-	ID          string    `schema:"ID"`
-	Title       string    `schema:"Title"`
-	Description string    `schema:"Description"`
-	DueDate     string    `schema:"DueDate"`
-	Completed   string     `schema:"Completed"`
+	ID          string `schema:"ID"`
+	Title       string `schema:"Title"`
+	Description string `schema:"Description"`
+	DueDate     string `schema:"DueDate"`
+	Completed   string `schema:"Completed"`
 }
 
 func SaveTasksToFile(tasks []TasksStruct, filename string) error {

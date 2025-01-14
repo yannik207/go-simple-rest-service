@@ -12,7 +12,6 @@ import (
 
 var decoder = schema.NewDecoder()
 
-
 func Post(w http.ResponseWriter, r *http.Request) {
 	var taskStruct database.TasksStruct
 
