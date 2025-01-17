@@ -1,17 +1,13 @@
 package server
 
 import (
-	"fmt"
 	"net/http"
+	"task-api/server/methods"
 )
 
-func WelcomeHandler(w http.ResponseWriter, r *http.Request) {
+func (s *APIServer) WelcomeHandler(w http.ResponseWriter, r *http.Request) error {
 
 	statusCode := http.StatusOK //200
 
-	w.WriteHeader(statusCode)
-
-	// Return a response to the user
-	responseMessage := fmt.Sprintf("Status code: %d, Hello from the API!", statusCode)
-	w.Write([]byte(responseMessage)) // Send the response message
+	return methods.WriteJSON(w, statusCode, "Hello from the API!")
 }
