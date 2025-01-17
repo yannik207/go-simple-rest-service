@@ -20,22 +20,3 @@ func (s *APIServer) TaskHandler(w http.ResponseWriter, r *http.Request) error {
 		return fmt.Errorf("method not allowed %s", r.Method)
 	}
 }
-
-func (s *APIServer) Get(w http.ResponseWriter, r *http.Request) error {
-	// loadedTasks, err := database.LoadTasksFromFile("tasks.json")
-	// if err != nil {
-	// 	fmt.Println("Error loading tasks:", err)
-	// 	return
-	// }
-
-	statusCode := http.StatusOK //200
-
-	w.WriteHeader(statusCode)
-
-	// Return a response to the user
-	// responseMessage := fmt.Sprintf("Status code: %d", statusCode)
-
-	w.Header().Set("Content-Type", "application/json")
-	// err = json.NewEncoder(w).Encode(loadedTasks)
-	return WriteJSON(w, statusCode, "dope")
-}
