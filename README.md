@@ -4,9 +4,6 @@ This is just a simple project to get more into http servers, REST Services, data
 
 ## Start the Service
 ```
-# start server
-$go run main.go
-
-# send get request
-$curl http://localhost:8080/hello
+# start server with database
+docker-compose up
 ```

@@ -3,7 +3,6 @@ package server
 import (
 	"fmt"
 	"net/http"
-	"task-api/server/methods"
 )
 
 func (s *APIServer) TaskHandler(w http.ResponseWriter, r *http.Request) error {
@@ -38,5 +37,5 @@ func (s *APIServer) Get(w http.ResponseWriter, r *http.Request) error {
 
 	w.Header().Set("Content-Type", "application/json")
 	// err = json.NewEncoder(w).Encode(loadedTasks)
-	return methods.WriteJSON(w, statusCode, "dope")
+	return WriteJSON(w, statusCode, "dope")
 }

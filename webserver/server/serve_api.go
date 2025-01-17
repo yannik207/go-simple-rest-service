@@ -2,7 +2,6 @@ package server
 
 import (
 	"net/http"
-	"task-api/server/methods"
 
 	"github.com/gorilla/mux"
 )
@@ -20,7 +19,7 @@ func NewAPIServer(listenAddr string) *APIServer {
 func makeHTTPHandleFunc(f apiFunc) http.HandlerFunc {
 	return func(w http.ResponseWriter, r *http.Request) {
 		if err := f(w, r); err != nil {
-			methods.WriteJSON(w, http.StatusBadRequest, ApiError{Error: err.Error()})
+			WriteJSON(w, http.StatusBadRequest, ApiError{Error: err.Error()})
 		}
 	}
 }
