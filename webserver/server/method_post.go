@@ -1,7 +1,6 @@
 package server
 
 import (
-	"encoding/json"
 	"fmt"
 	"log"
 	"net/http"
@@ -12,7 +11,7 @@ import (
 
 var decoder = schema.NewDecoder()
 
-func Post(w http.ResponseWriter, r *http.Request) {
+func (s *APIServer) Post(w http.ResponseWriter, r *http.Request) error {
 	var taskStruct database.TasksStruct
 
 	fmt.Printf("Type of ResponseWriter: %T\n", w)
@@ -20,8 +19,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
 
 	// Parse the form data
 	if err := r.ParseForm(); err != nil {
-		http.Error(w, "Failed to parse form data", http.StatusBadRequest)
-		return
+		return fmt.Errorf("Failed to parse form data %d\n", http.StatusBadRequest)
 	}
 
 	// Access the parsed form data
@@ -30,15 +28,13 @@ func Post(w http.ResponseWriter, r *http.Request) {
 
 	// Validate the number of form fields
 	if len(form) != 5 {
-		http.Error(w, "Form data is incomplete or invalid", http.StatusBadRequest)
-		return
+		return fmt.Errorf("Form data is incomplete or invalid %d\n", http.StatusBadRequest)
 	}
 
 	// Decode the form data into the struct
 	if err := decoder.Decode(&taskStruct, form); err != nil {
 		log.Println("Error decoding form data: ", err)
-		http.Error(w, "Failed to decode form data", http.StatusBadRequest)
-		return
+		return fmt.Errorf("Failed to decode form data %d\n", http.StatusBadRequest)
 	}
 
 	log.Println("Decoded task: ", taskStruct)
@@ -56,8 +52,7 @@ func Post(w http.ResponseWriter, r *http.Request) {
 	existingTasks, err := database.LoadTasksFromFile("tasks.json")
 	if err != nil {
 		log.Println("Error loading tasks from file:", err)
-		http.Error(w, "Failed to load tasks", http.StatusInternalServerError)
-		return
+		return fmt.Errorf("Failed to load tasks %d\n", http.StatusInternalServerError)
 	}
 
 	// Append the new task to the existing tasks
@@ -67,11 +62,8 @@ func Post(w http.ResponseWriter, r *http.Request) {
 	err = database.SaveTasksToFile(allTasks, "tasks.json")
 	if err != nil {
 		log.Println("Error saving tasks to file:", err)
-		http.Error(w, "Failed to save tasks", http.StatusInternalServerError)
-		return
+		return fmt.Errorf("Failed to save tasks %d\n", http.StatusInternalServerError)
 	}
 
-	// Respond with the updated task list
-	w.Header().Set("Content-Type", "application/json")
-	json.NewEncoder(w).Encode(taskStruct)
+	return WriteJSON(w, http.StatusAccepted, taskStruct)
 }
