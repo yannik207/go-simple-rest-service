@@ -3,3 +3,6 @@
 
 # vscode settings for golang
 settings.json
+
+# binaries
+task-api
